@@ -59,15 +59,15 @@ void
 HwmpRtable::AddReactivePath (Mac48Address destination, Mac48Address retransmitter, uint32_t interface,
                              uint32_t metric, Time lifetime, uint32_t seqnum, Mac48Address sourceA, uint8_t processing_delay_required, uint8_t bandwidth_required,uint32_t pathid) ///////            
 {
-   std::map<std::pair<Mac48Address, Mac48Address>, ReactiveRouteMP>::iterator l =
+   std::map<std::pair<Mac48Address, Mac48Address>, ReactiveRouteMP>::iterator i =
 				  m_routesMP.find (std::make_pair(destination, retransmitter)); //To save all routes
-		  if (l == m_routesMP.end ())
+		  if (i == m_routesMP.end ())
 			{
 			  ReactiveRouteMP newroute;
 			  m_routesMP[std::make_pair(destination, retransmitter)] = newroute;
 			}
-		  l = m_routesMP.find (std::make_pair(destination, retransmitter));
-		  NS_ASSERT (l != m_routesMP.end ());
+		  i = m_routesMP.find (std::make_pair(destination, retransmitter));
+		  NS_ASSERT (i != m_routesMP.end ());
   i->second.destination = destination;
   i->second.retransmitter = retransmitter;
   i->second.interface = interface;
